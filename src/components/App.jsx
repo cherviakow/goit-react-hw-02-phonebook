@@ -1,5 +1,4 @@
 import { nanoid } from 'nanoid';
-import React from "react";
 import { Component } from "react";
 import ContactForm from "./ContactForm/ContactForm";
 import ContactList from "./ContactList/ContactList";
@@ -68,9 +67,9 @@ Delite = todoId => {
     return (
       <>
       <Container>
-      <ContactForm/>
+      <ContactForm onSubmit={this.formSubmitHandler}/>
       <Filter value={filter} onChange={this.ChangeFilter}/>
-      <ContactList contacts={VilibleTodos} />
+      <ContactList contacts={VilibleTodos} OnDelite={this.Delite}/>
       </Container>
       </>
     )

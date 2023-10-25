@@ -23,27 +23,6 @@ const ContactList = ({ contacts, OnDelite }) => {
   export default ContactList;
 
 
-
-// const ContactList = ({contacts, onDelite})=>{
-// return(
-//     <ul className="contactList">
-//         {contacts.map(({id, name, number})=>{
-//             return(
-//             <li className="contactItem" key={id}>
-//                 <p className="listItem">{name}</p>
-//                 <p className="listItem">{number}</p>
-//                 <button className="deliteBtn" onClick={onDelite(id)}>
-//                     Delete
-//                 </button>
-//             </li>
-//             );
-//         })}
-//     </ul>
-// )
-// }
-
-// export default ContactList;
-
 // ContactList.propTypes = {
 //     contacts: PropTypes.arrayOf(
 //         PropTypes.shape({

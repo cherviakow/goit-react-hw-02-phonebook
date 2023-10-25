@@ -9,23 +9,34 @@ state ={
 }    
 
 
-hangleChange = ({target})=>{
-this.setState({
-    [target.name]: target.value,
-});
+hangleChange = event=>{
+    const { name, value } = event.currentTarget;
+    this.setState({
+      [name]: value,
+    });
 }
 
-handleSubmit = (e)=>{
-e.preventDefault();
+handleSabmit = event => {
+    event.preventDefault();
+    this.props.onSubmit(this.state);
+    this.reset();
+  };
+  reset = () => {
+    this.setState({
+      name: '',
+      number: '',
+    });
+
 }
 
 
 render(){
     return(
-    <>
+    <div>
     <h1>Phonebook</h1>
         <div className={css.formDiv}>
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSabmit}>
+                <label>
                 Name
                 <input
                 className={css.contactInput}
@@ -37,12 +48,13 @@ render(){
                 onChange={this.hangleChange}
                 value={this.state.name}
                  /> 
+                 </label>
             </form>
             <form>
                 Number
                 <input
                 className={css.contactInput}
-                type="text"
+                type="tel"
                 name="number"
                 // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
                 // title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
@@ -50,22 +62,13 @@ render(){
                 onChange={this.hangleChange}
                 value={this.state.number}
                  /> 
+                 <button className={css.sabmitBtn} type="submit">Add contact</button>
             </form>
-            <button className={css.sabmitBtn}>Add contact</button>
-
-
-
         </div>
 
-        </>
+        </div>
     )
-
-
-
 }
-
-
-
 }
 
 export default ContactForm;
