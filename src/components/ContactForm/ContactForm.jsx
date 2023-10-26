@@ -3,13 +3,13 @@ import css from "./ContactForm.module.css"
 
 class ContactForm extends Component {
 
-state ={
+state = {
  name: '',
  number: '',
 }    
 
 
-hangleChange = event=>{
+hangleChange = event=> {
     const { name, value } = event.currentTarget;
     this.setState({
       [name]: value,
@@ -17,7 +17,7 @@ hangleChange = event=>{
 }
 
 handleSabmit = event => {
-    event.preventDefault();
+  event.preventDefault();
     this.props.onSubmit(this.state);
     this.reset();
   };
@@ -26,17 +26,16 @@ handleSabmit = event => {
       name: '',
       number: '',
     });
-
 }
 
 
 render(){
     return(
-    <div>
+    <div className={css.formDiv}>
+      <form onSubmit={this.handleSabmit}>
+      <label className="label">
     <h1>Phonebook</h1>
-        <div className={css.formDiv}>
-            <form onSubmit={this.handleSabmit}>
-                <label>
+
                 Name
                 <input
                 className={css.contactInput}
@@ -49,8 +48,8 @@ render(){
                 value={this.state.name}
                  /> 
                  </label>
-            </form>
-            <form>
+          
+            <label className="lable">
                 Number
                 <input
                 className={css.contactInput}
@@ -62,11 +61,11 @@ render(){
                 onChange={this.hangleChange}
                 value={this.state.number}
                  /> 
-                 <button className={css.sabmitBtn} type="submit">Add contact</button>
-            </form>
-        </div>
-
-        </div>
+                 </label>
+                 <button className={css.sabmitBtn} type="submit">Add contact
+                 </button>
+        </form>
+        </div>       
     )
 }
 }

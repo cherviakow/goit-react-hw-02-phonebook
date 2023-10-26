@@ -5,7 +5,7 @@ import css from './Filter.module.css';
 const Filter = ({value, onChange}) =>{
     return(
         <>
-        <h1>Contacts</h1>
+        <h1 className={css.filterHeader}>Contacts</h1>
         <p className={css.filterText}>Find contatcs by name
         <input type="text" className={css.filterInput} value={value} onChange={onChange}/>
         </p>
