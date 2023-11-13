@@ -7,6 +7,9 @@ import Container from './Container/Container';
 
 class App extends Component {
   state = { 
+
+  toDo: [],
+
     contacts: [
       {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
       {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
@@ -52,6 +55,21 @@ Delite = todoId => {
     contacts: prevState.contacts.filter(cont => cont.id !== todoId),
   }));
 };
+
+componentDidMount(){
+
+  const contactEl = JSON.parse(localStorage.getItem('contacts'));
+  if (contactEl) this.setState({contacts: contactEl});
+  console.log(contactEl);
+}
+
+componentDidUpdate(prevProps, prevState){
+
+  if(this.state.contacts !== prevState.contacts){
+    localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+  }
+  
+}
 
 
   render() { 
